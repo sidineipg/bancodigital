@@ -56,8 +56,13 @@ public class TransactionService {
         this.userService.saveUser(receiver);
 
         //Serviço fora do ar em 02/02/2025
-//        this.notificationService.sendNotification(sender, "Transação realizada com sucesso");
-//        this.notificationService.sendNotification(receiver, "Transação recebida com sucesso");
+        try{
+            this.notificationService.sendNotification(sender, "Transação realizada com sucesso");
+            this.notificationService.sendNotification(receiver, "Transação recebida com sucesso");
+        }catch (Exception ex) {
+            System.out.println("Erro ao enviar notificação");
+        }
+
 
         return newTransaction;
 
